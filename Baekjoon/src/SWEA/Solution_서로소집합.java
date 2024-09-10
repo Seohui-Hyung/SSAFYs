@@ -1,3 +1,4 @@
+package SWEA;
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

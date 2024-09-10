@@ -1,3 +1,4 @@
+package SWEA;
 import java.util.Scanner;
 
 public class Solution_나무높이2 {
