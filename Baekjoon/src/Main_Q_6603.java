@@ -1,52 +1,60 @@
-import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.nio.channels.SelectableChannel;
-import java.awt.*;
+public class Main_Q_6603 { 
+	static int n;
+	static int[] arr;
+	static int[] set;
+	static boolean[] visit;
+	static StringBuilder sb;
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		while(true) {
+			st = new StringTokenizer(br.readLine());
+			sb = new StringBuilder();
+			n = Integer.parseInt(st.nextToken());
+			
+			// 0이면 중단
+			if(n == 0) break;
+			
+			// 입력 받은 수 저장
+			arr = new int[n];
+			for(int i = 0; i < n; i++) {
+				arr[i] = Integer.parseInt(st.nextToken());
+			}
+			
+			// 부분 집합 저장할 배열 생성
+			set = new int[6];
+			// 방문 체크 배열
+			visit = new boolean[n];
+			pick(0, 0);
+			
+			System.out.println(sb);
+		}
+	}
 
-public class Main_Q_6603 extends JFrame{
-	private JLabel label = new JLabel("서히 언니는 바보야");
-	
-	public Main_Q_6603() {
-		setTitle("서히언니");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container c = getContentPane();
+	static void pick(int start, int depth) {
+		if(depth == 6) {
+			for(int num : set) {
+				sb.append(num).append(" ");
+			}
+			sb.append("\n");
+			return;
+		}
 		
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Ravie", Font.ITALIC, 30));
-		c.add(label, BorderLayout.CENTER);
-		createMenu();
-		setSize(250, 200);
-		setVisible(true);
-	}
-	
-	private void createMenu() {
-		JMenuBar mb = new JMenuBar();
-		JMenuItem colormenuitem = new JMenuItem("color");
-		JMenu filemenu = new JMenu("text");
-		
-		colormenuitem.addActionListener(new menuActionListner());
-		
-		filemenu.add(colormenuitem);
-		mb.add(filemenu);
-		this.setJMenuBar(mb);
-		
-	}
-	
-	class menuActionListner implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			String cmd = e.getActionCommand();
-			if(cmd.equals("color")) {
-				Color selectedColor = JColorChooser.showDialog(null, "color", Color.black);
-				if(selectedColor != null) 
-					label.setForeground(selectedColor);
+		for(int i = start; i < n; i++) {
+			if(!visit[i]) {
+				visit[i] = true;
+				set[depth] = arr[i];
+				pick(i, depth + 1);
+				visit[i] = false;
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		new Main_Q_6603();
-	}
-}
 
+}
