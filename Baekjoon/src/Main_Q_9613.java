@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main_Q_9613 {
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -19,7 +20,7 @@ public class Main_Q_9613 {
 				nums[j] = Integer.parseInt(st.nextToken());
 			}
 
-			int sum = 0; // GCD 합
+			long sum = 0; // GCD 합
 			
 			for(int j = 0; j < n - 1; j++) {
 				for(int k = j + 1; k < n; k++) {
