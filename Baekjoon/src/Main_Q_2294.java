@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_Q_2294_1 {
+public class Main_Q_2294 {
 	static int n, k;
 	static int[] coin; // 각 동천의 종류(가치)를 입력할 배열
 	static int[] dp; // 인덱스 값을 합으로 갖는 최소 동전의 수 저장할 배열
