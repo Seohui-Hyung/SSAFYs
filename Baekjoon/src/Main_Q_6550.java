@@ -25,9 +25,9 @@ public class Main_Q_6550 {
             }
 
             if (now == s.length()) {
-                System.out.println("YES");
+                System.out.println("Yes");
             } else {
-                System.out.println("NO");
+                System.out.println("No");
             }
         }
     }
